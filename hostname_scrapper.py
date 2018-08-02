@@ -4,7 +4,7 @@ from os import listdir
 from os.path import isfile,join
 with open("output_hosts.csv","w",newline='') as csvfile:
     csvwrite=csv.writer(csvfile)
-    csvwrite.writerow(["Hostname", "What is it?", "Path to the file", "Disposition"])
+    csvwrite.writerow(["Hostname", "What is it?", "Path to the file"])
     def dirs(path):
         dirs_list=listdir(path)
         for i in  dirs_list:
