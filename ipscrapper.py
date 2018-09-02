@@ -12,7 +12,7 @@ with open("output.csv","w",newline='') as csvfile:
                 try:
                     with open(join(path,i),"r") as f:
                         for line in f:
-                            test=re.search(r'(?<!\d)(?!0|127)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}',line)
+                            test=re.search(r'(?<!\d)(?!0|127)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}(\/\d{2})?',line)
                             if test:
                                 try:
                                     host=socket.gethostbyaddr(test.group(0))[0]
@@ -23,7 +23,7 @@ with open("output.csv","w",newline='') as csvfile:
                 except:
                     with open(join(path,i),"rb") as f:
                         for line in f:
-                            test = re.search(b'(?<!\d)(?!0|127)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}', line)
+                            test = re.search(b'(?<!\d)(?!0|127)\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}(\/\d{2})?', line)
                             if test:
                                 print(test.group(0), "Not found", join(path,i)[27:])
                                 csvwrite.writerow([test.group(0), "Not found", join(path,i)])
